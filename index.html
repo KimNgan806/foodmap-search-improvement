@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FOODMAP - Tìm kiếm sản phẩm</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <a href="#" class="logo">FOODMAP</a>
+        <span class="header-text">Khám phá đặc sản Việt Nam</span>
+    </header>
+
+    <main class="container">
+        <section class="search-section">
+            <p class="eyebrow">KHÁM PHÁ SẢN PHẨM</p>
+            <h1>Tìm sản phẩm bạn yêu thích</h1>
+            <p class="description">
+                Tìm kiếm nông sản, thực phẩm và đặc sản chất lượng.
+            </p>
+
+            <form class="search-form" action="#">
+                <label for="keyword" class="visually-hidden">
+                    Từ khóa tìm kiếm
+                </label>
+                <input
+                    type="search"
+                    id="keyword"
+                    placeholder="Nhập tên sản phẩm..."
+                >
+                <button type="submit">Tìm kiếm</button>
+            </form>
+
+            <div class="suggestions">
+                <span>Gợi ý:</span>
+                <a href="#products">Cà phê</a>
+                <a href="#products">Trái cây</a>
+                <a href="#products">Đồ sấy</a>
+                <a href="#products">Trà</a>
+            </div>
+        </section>
+
+        <section class="empty-state">
+            <div class="empty-icon" aria-hidden="true">⌕</div>
+            <h2>Chưa tìm thấy sản phẩm phù hợp</h2>
+            <p>
+                Bà hãy thử kiểm tra chính tả hoặc sử dụng từ khóa ngắn hơn.
+                Bà cũng có thể chọn một gợi ý bên trên để khám phá sản phẩm.
+            </p>
+            <a class="back-link" href="#products">Khám phá sản phẩm</a>
+        </section>
+
+        <section class="products-section" id="products">
+            <div class="section-heading">
+                <div>
+                    <h2>Sản phẩm gợi ý</h2>
+                    <p>Một số sản phẩm bạn có thể quan tâm</p>
+                </div>
+            </div>
+
+            <div class="product-grid">
+                <article class="product-card">
+                    <img src="images/product1.jpg"
+                         alt="Sản phẩm cà phê"
+                         class="product-image">
+                    <div class="product-info">
+                        <p class="category">Trà - Cà phê</p>
+                        <h3>Cà phê rang xay</h3>
+                        <p class="price">120.000đ</p>
+                        <a href="#" class="product-button">Xem sản phẩm</a>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <img src="images/product2.jpg"
+                         alt="Sản phẩm trái cây"
+                         class="product-image">
+                    <div class="product-info">
+                        <p class="category">Trái cây</p>
+                        <h3>Trái cây tươi</h3>
+                        <p class="price">85.000đ</p>
+                        <a href="#" class="product-button">Xem sản phẩm</a>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <img src="images/product3.jpg"
+                         alt="Sản phẩm trái cây sấy"
+                         class="product-image">
+                    <div class="product-info">
+                        <p class="category">Đồ sấy - Ăn vặt</p>
+                        <h3>Trái cây sấy</h3>
+                        <p class="price">65.000đ</p>
+                        <a href="#" class="product-button">Xem sản phẩm</a>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <img src="images/product4.jpg"
+                         alt="Sản phẩm trà"
+                         class="product-image">
+                    <div class="product-info">
+                        <p class="category">Trà</p>
+                        <h3>Trà thảo mộc</h3>
+                        <p class="price">95.000đ</p>
+                        <a href="#" class="product-button">Xem sản phẩm</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        Giao diện minh họa cải tiến tìm kiếm sản phẩm FOODMAP
+    </footer>
+</body>
+</html>

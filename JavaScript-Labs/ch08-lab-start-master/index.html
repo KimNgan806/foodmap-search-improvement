@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Lab 08 - JavaScript 1: Language Foundations, portfolio thực hành của Trần Thị Kim Ngân tại UEH.">
+  <title>Lab 08 | JavaScript Foundations - Trần Thị Kim Ngân</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f5f8fc; --surface: #fff; --text: #162942; --muted: #64748b;
+      --border: #e1e8f2; --blue: #2868bd; --soft-blue: #edf5ff;
+      --shadow: 0 14px 36px rgba(13, 31, 56, .06);
+    }
+    html.dark-mode {
+      color-scheme: dark;
+      --bg: #101b2d; --surface: #192b44; --text: #edf4ff;
+      --muted: #b2c2d8; --border: #304660; --blue: #9ac4ff;
+      --soft-blue: #254566;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--bg); color: var(--text); font-family: "Be Vietnam Pro", sans-serif; line-height: 1.7; }
+    a { color: inherit; text-decoration: none; }
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+    .container { max-width: 1150px; width: calc(100% - 40px); margin: auto; }
+    .topbar { background: var(--surface); border-bottom: 1px solid var(--border); }
+    .topbar-inner { min-height: 76px; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+    .brand { display: flex; align-items: center; gap: 12px; font-size: 13px; font-weight: 800; }
+    .brand-mark { display: grid; place-items: center; width: 43px; height: 43px; color: #fff; background: #102440; border-radius: 12px; }
+    .top-actions { display: flex; align-items: center; gap: 15px; }
+    .back-link { font-weight: 600; font-size: 12px; color: var(--muted); }
+    .theme-toggle { padding: 9px 13px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface); color: var(--text); font-size: 12px; }
+    .hero { margin-top: 32px; padding: 52px; border-radius: 24px; background: radial-gradient(circle at 85% 0%, rgba(127, 191, 255, .2), transparent 42%), linear-gradient(125deg, #102440, #1f456e); color: #fff; display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(240px, .7fr); gap: 40px; align-items: center; }
+    .eyebrow { color: #b9dbff; font-size: 11px; letter-spacing: 1.7px; font-weight: 800; text-transform: uppercase; }
+    h1 { font-size: clamp(34px, 5vw, 60px); line-height: 1.16; letter-spacing: -2px; margin: 14px 0 18px; }
+    h1 span { color: #f3cba5; display: block; }
+    .hero-description { font-size: 13px; color: #d5e5f6; max-width: 600px; line-height: 2; }
+    .tags { display: flex; gap: 9px; flex-wrap: wrap; margin: 24px 0 30px; }
+    .tags span { border: 1px solid rgba(255,255,255,.26); border-radius: 25px; padding: 6px 13px; font-size: 11px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 11px; }
+    .btn { display: inline-flex; justify-content: center; padding: 12px 19px; border-radius: 10px; font-size: 12px; font-weight: 800; transition: transform .2s; }
+    .btn:hover { transform: translateY(-3px); }
+    .btn-white { color: #102440; background: white; }
+    .btn-outline { border: 1px solid rgba(255,255,255,.4); color: white; }
+    .profile { border: 1px solid rgba(255,255,255,.22); border-radius: 19px; padding: 26px 18px; background: rgba(255,255,255,.08); text-align: center; }
+    .avatar { display: block; margin: 0 auto 15px; width: 108px; height: 108px; object-fit: cover; border-radius: 50%; border: 4px solid white; background: #b8cbe2; }
+    .profile h2 { font-size: 16px; margin: 0 0 8px; }
+    .profile p { font-size: 11px; color: #d5e5f6; margin: 5px 0; }
+    .profile .profile-label { color: #f3cba5; font-size: 11px; font-weight: 800; border-top: 1px solid rgba(255,255,255,.22); margin-top: 18px; padding-top: 16px; }
+    .stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 17px; margin: 22px 0 65px; }
+    .stat { border: 1px solid var(--border); background: var(--surface); padding: 21px 25px; border-radius: 15px; }
+    .stat strong { display: block; font-size: 27px; line-height: 1.4; }
+    .stat span { color: var(--muted); font-size: 12px; }
+    .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 23px; }
+    .section-label { color: var(--blue); font-size: 11px; font-weight: 800; letter-spacing: 1.5px; }
+    .section-heading h2 { font-size: clamp(24px, 3vw, 34px); letter-spacing: -.7px; margin: 8px 0 4px; }
+    .section-heading p { font-size: 12px; margin: 0; color: var(--muted); }
+    .search { padding: 12px 15px; background: var(--surface); color: var(--text); border: 1px solid var(--border); border-radius: 11px; width: min(300px, 100%); font-size: 12px; }
+    .search:focus { outline: 2px solid var(--blue); outline-offset: 2px; }
+    .filters { display: flex; flex-wrap: wrap; gap: 9px; margin: 0 0 22px; }
+    .filter { background: var(--surface); color: var(--muted); border: 1px solid var(--border); border-radius: 22px; padding: 8px 15px; font-size: 11px; font-weight: 700; }
+    .filter.active { background: #102440; color: #fff; border-color: #102440; }
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+    .card { min-height: 231px; display: flex; flex-direction: column; padding: 25px; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; transition: transform .2s, box-shadow .2s; }
+    .card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+    .card-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
+    .number { font-size: 29px; font-weight: 800; color: #a3bddd; line-height: 1.3; }
+    .category { font-size: 10px; font-weight: 800; background: var(--soft-blue); color: var(--blue); padding: 6px 11px; border-radius: 7px; }
+    .card h3 { margin: 0 0 9px; font-size: 16px; }
+    .card p { margin: 0 0 20px; font-size: 12px; color: var(--muted); }
+    .card-bottom { margin-top: auto; padding-top: 15px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; gap: 10px; align-items: center; }
+    .done { color: #209371; font-size: 10px; font-weight: 700; }
+    .open-link { color: var(--blue); font-size: 12px; font-weight: 800; }
+    .open-link:hover, .back-link:hover { text-decoration: underline; }
+    .hint { color: var(--muted); font-size: 11px; margin-top: 19px; }
+    .no-results { background: var(--surface); border: 1px solid var(--border); border-radius: 15px; padding: 36px; text-align: center; color: var(--muted); }
+    [hidden] { display: none !important; }
+    .demo, .reflection { margin-top: 45px; padding: 30px; border: 1px solid var(--border); border-radius: 16px; background: var(--surface); }
+    .demo { border-left: 4px solid var(--blue); }
+    .demo h2, .reflection h2 { margin: 0 0 10px; font-size: 19px; }
+    .demo p, .reflection p { font-size: 13px; color: var(--muted); margin: 0 0 12px; }
+    .demo-status { font-weight: 800; color: #188569 !important; }
+    .reflection { margin-top: 22px; margin-bottom: 58px; }
+    footer { padding: 25px 0; background: var(--surface); border-top: 1px solid var(--border); }
+    .footer-inner { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 15px; font-size: 11px; color: var(--muted); }
+    .footer-inner a { font-weight: 800; color: var(--blue); }
+    a:focus-visible, button:focus-visible { outline: 3px solid #8fc5ff; outline-offset: 3px; }
+    @media (max-width: 850px) { .hero { grid-template-columns: 1fr; padding: 34px; } .profile { max-width: 420px; } .section-heading { align-items: stretch; flex-direction: column; } .search { width: 100%; max-width: none; } }
+    @media (max-width: 600px) { .container { width: calc(100% - 28px); } .top-actions .back-link { display: none; } .hero { margin-top: 15px; padding: 26px 22px; } h1 { letter-spacing: -1px; } .stats { grid-template-columns: repeat(2,1fr); gap: 10px; margin-bottom: 45px; } .stat { padding: 17px; } .stat:last-child { grid-column: span 2; } .grid { grid-template-columns: 1fr; } .card { min-height: 0; } .demo, .reflection { padding: 22px; } }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="container topbar-inner" aria-label="Điều hướng">
+      <a class="brand" href="../index.html"><span class="brand-mark">KN.</span><span>Kim Ngan / JavaScript Labs</span></a>
+      <div class="top-actions">
+        <a class="back-link" href="../index.html">Về Portfolio tổng thể ↗</a>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false">🌙 Giao diện tối</button>
+      </div>
+    </nav>
+  </header>
+  <main class="container">
+    <section class="hero" aria-labelledby="hero-title">
+      <div>
+        <span class="eyebrow">UEH · PHÁT TRIỂN ỨNG DỤNG TMĐT</span>
+        <h1 id="hero-title">JavaScript 1 <span>Language Foundations.</span></h1>
+        <p class="hero-description">Lab 08 là bước khởi đầu trong quá trình thực hành JavaScript của tôi. Trang này tổng hợp 11 bài tập về cách tích hợp JavaScript, kiểm tra và gỡ lỗi, làm việc với mảng, hàm và đối tượng — những kiến thức nền tảng để xây dựng chức năng tương tác trên website.</p>
+        <div class="tags"><span>JavaScript Basics</span><span>Browser Console</span><span>Arrays</span><span>Functions</span><span>Objects</span></div>
+        <div class="hero-actions"><a class="btn btn-white" href="#exercises">Khám phá 11 bài tập ↓</a><a class="btn btn-outline" href="https://github.com/KimNgan806/foodmap-search-improvement" target="_blank" rel="noopener noreferrer">Xem GitHub ↗</a></div>
+      </div>
+      <aside class="profile" aria-label="Thông tin sinh viên">
+        <img class="avatar" src="images/Trần Thị Kim Ngân.jpg" alt="Ảnh đại diện Trần Thị Kim Ngân">
+        <h2>Trần Thị Kim Ngân</h2>
+        <p>MSSV: 31241027118</p>
+        <p>Lớp học phần: 26C1INF50902702</p>
+        <p>Đại học Kinh tế TP. Hồ Chí Minh</p>
+        <p>Ngành Thương mại điện tử</p>
+        <p class="profile-label">LAB 08 · JAVASCRIPT 1</p>
+      </aside>
+    </section>
+    <section class="stats" aria-label="Tổng quan Lab 08">
+      <div class="stat"><strong>11</strong><span>Bài thực hành</span></div>
+      <div class="stat"><strong>05</strong><span>Nhóm kiến thức</span></div>
+      <div class="stat"><strong>Lab 08</strong><span>JavaScript Foundations</span></div>
+    </section>
+    <section id="exercises" aria-labelledby="exercise-title">
+      <div class="section-heading">
+        <div><span class="section-label">PRACTICE COLLECTION</span><h2 id="exercise-title">Danh mục bài thực hành</h2><p>11 bài thực hành được phân loại theo nội dung, có tìm kiếm và bộ lọc nhanh.</p></div>
+        <input id="searchExercise" class="search" type="search" placeholder="Tìm bài tập hoặc kiến thức..." aria-label="Tìm kiếm bài tập">
+      </div>
+      <div class="filters" role="group" aria-label="Lọc bài tập">
+        <button type="button" class="filter active" data-filter="all" aria-pressed="true">Tất cả (11)</button>
+        <button type="button" class="filter" data-filter="setup" aria-pressed="false">Thiết lập</button>
+        <button type="button" class="filter" data-filter="console" aria-pressed="false">Console</button>
+        <button type="button" class="filter" data-filter="data" aria-pressed="false">Dữ liệu</button>
+        <button type="button" class="filter" data-filter="functions" aria-pressed="false">Hàm</button>
+        <button type="button" class="filter" data-filter="objects" aria-pressed="false">Đối tượng</button>
+      </div>
+      <div class="grid" id="exerciseGrid">
+        <article class="card" data-category="setup"><div class="card-top"><span class="number">8.1</span><span class="category">THIẾT LẬP</span></div><h3>Enabling / Disabling JavaScript</h3><p>Nhận biết trạng thái bật hoặc tắt JavaScript của trình duyệt; xem ví dụ kiểm tra ngay bên dưới.</p><div class="card-bottom"><span class="done">✓ Đã thực hành</span><a class="open-link" href="#exercise81">Xem minh họa ↗</a></div></article>
+        <article class="card" data-category="setup"><div class="card-top"><span class="number">8.2</span><span class="category">THIẾT LẬP</span></div><h3>Embedded JavaScript</h3><p>Nhúng JavaScript trực tiếp vào phần head của tài liệu HTML bằng thẻ script.</p><div class="card-bottom"><span class="done">✓ Đã thực hành</span><a class="open-link" href="lab08-walkthrough02.html">Mở bài tập ↗</a></div></article>
+        <article class="card" data-category="setup"><div class="card-top"><span class="number">8.3</span><span class="category">THIẾT LẬP</span></div><h3>External JavaScript</h3><p>Liên kết tệp JavaScript bên ngoài và hiển thị nội dung bằng document.write().</p><div class="card-bottom"><span class="done">✓ Đã thực hành</span><a class="open-link" href="lab08-walkthrough02.html">Mở bài tập ↗</a></div></article>
+        <article class="card" data-category="setup"><div class="card-top"><span class="number">8.4</span><span class="category">THIẾT LẬP</span></div><h3>Using &lt;noscript&gt;</h3><p>Thông báo nội dung thay thế khi trình duyệt không cho phép thực thi JavaScript.</p><div class="card-bottom"><span class="done">✓ Đã thực hành</span><a class="open-link" href="lab08-walkthrough02.html">Mở bài tập ↗</a></div></article>
+        <article class="card" data-category="console"><div class="card-top"><span class="number">8.5</span><span class="category">CONSOLE</span></div><h3>Using the Browser Console</h3><p>Kiểm tra các thông báo log, warn, error và gỡ lỗi JavaScript qua Developer Tools.</p><div class="card-bottom"><span class="done">✓ Đã thực hành</span><a class="open-link" href="lab08-walkthrough02.html">Mở bài tập ↗</a></div></article>
+        <article class="card" data-category="data"><div class="card-top"><span class="number">8.6</span><span class="category">DỮ LIỆU</span></div><h3>Built-in JavaScript Objects</h3><p>Thao tác với các đối tượng dựng sẵn như String, Date và các giá trị dữ liệu.</p><div class="card-bottom"><span class="done">✓ Đã thực hành</span><a class="open-link" href="lab08-walkthrough06.html">Mở bài tập ↗</a></div></article>
+        <article class="card" data-category="data"><div class="card-top"><span class="number">8.7</span><span class="category">DỮ LIỆU</span></div><h3>Arrays</h3><p>Khởi tạo, thêm phần tử, duyệt và hiển thị nội dung của mảng JavaScript.</p><div class="card-bottom"><span class="done">✓ Đã thực hành</span><a class="open-link" href="lab08-walkthrough07.html">Mở bài tập ↗</a></div></article>
+        <article class="card" data-category="functions"><div class="card-top"><span class="number">8.8</span><span class="category">HÀM</span></div><h3>JavaScript Functions</h3><p>Viết hàm có tham số, sử dụng vòng lặp và quan sát phạm vi hoạt động của biến.</p><div class="card-bottom"><span class="done">✓ Đã thực hành</span><a class="open-link" href="lab08-walkthrough08.html">Mở bài tập ↗</a></div></article>
+        <article class="card" data-category="functions"><div class="card-top"><span class="number">8.9</span><span class="category">HÀM</span></div><h3>Functions as Objects</h3><p>Vận dụng hàm tính toán giá tiền, số lượng và thuế trong ví dụ đơn hàng.</p><div class="card-bottom"><span class="done">✓ Đã thực hành</span><a class="open-link" href="lab08-walkthrough09.html">Mở bài tập ↗</a></div></article>
+        <article class="card" data-category="objects"><div class="card-top"><span class="number">8.10</span><span class="category">ĐỐI TƯỢNG</span></div><h3>Creating JavaScript Objects</h3><p>Khởi tạo đối tượng, gán thuộc tính và định nghĩa phương thức xử lý dữ liệu.</p><div class="card-bottom"><span class="done">✓ Đã thực hành</span><a class="open-link" href="lab08-walkthrough10.html">Mở bài tập ↗</a></div></article>
+        <article class="card" data-category="objects"><div class="card-top"><span class="number">8.11</span><span class="category">ĐỐI TƯỢNG</span></div><h3>Arrays of Objects</h3><p>Quản lý danh sách đối tượng và sử dụng vòng lặp để hiển thị dữ liệu.</p><div class="card-bottom"><span class="done">✓ Đã thực hành</span><a class="open-link" href="lab08-walkthrough11.html">Mở bài tập ↗</a></div></article>
+      </div>
+      <p id="emptyState" class="no-results" hidden>Không tìm thấy bài thực hành phù hợp.</p>
+      <p class="hint">Bài 8.2–8.5 dùng chung file lab08-walkthrough02.html vì các bài kế tiếp được xây dựng từ ví dụ trước đó.</p>
+    </section>
+    <section id="exercise81" class="demo" aria-labelledby="demo-title">
+      <h2 id="demo-title">Minh họa Exercise 8.1 · Kiểm tra JavaScript</h2>
+      <p>Ví dụ kiểm tra JavaScript có được bật trong trình duyệt hiện tại hay không.</p>
+      <p id="jsStatus" class="demo-status">JavaScript chưa được thực thi hoặc đang bị tắt.</p>
+      <noscript><p>Trình duyệt đang tắt JavaScript. Đây là nội dung hiển thị từ thẻ &lt;noscript&gt;.</p></noscript>
+      <p class="hint">Bài 8.1 trong tài liệu là thao tác kiểm tra cài đặt trình duyệt, không có file HTML walkthrough riêng.</p>
+    </section>
+    <section class="reflection" aria-labelledby="reflection-title">
+      <h2 id="reflection-title">Điều tôi học được từ Lab 08</h2>
+      <p>Lab 08 giúp tôi làm quen với JavaScript qua những thao tác căn bản, từ cách nhúng mã vào HTML đến làm việc với mảng, hàm và đối tượng. Tôi cũng thực hành quan sát thông báo trong Console để nhận diện lỗi và kiểm tra kết quả xử lý. Đây là nền tảng cần thiết cho việc xây dựng biểu mẫu, xử lý dữ liệu và các chức năng tương tác trong website thương mại điện tử.</p>
+    </section>
+  </main>
+  <footer><div class="container footer-inner"><span>© 2026 Trần Thị Kim Ngân · UEH</span><span>Lab 08 / JavaScript 1: Language Foundations</span><a href="../index.html">Quay về Portfolio ↑</a></div></footer>
+  <script>
+    const toggle = document.getElementById('themeToggle');
+    const search = document.getElementById('searchExercise');
+    const filterButtons = document.querySelectorAll('.filter');
+    const cards = document.querySelectorAll('.card');
+    const emptyState = document.getElementById('emptyState');
+    let currentFilter = 'all';
+
+    document.getElementById('jsStatus').textContent = '✓ JavaScript đang được bật và hoạt động trong trình duyệt này.';
+
+    toggle.addEventListener('click', () => {
+      const dark = document.documentElement.classList.toggle('dark-mode');
+      toggle.textContent = dark ? '☀️ Giao diện sáng' : '🌙 Giao diện tối';
+      toggle.setAttribute('aria-pressed', String(dark));
+    });
+
+    function renderCards() {
+      const keyword = search.value.toLocaleLowerCase('vi').trim();
+      let visible = 0;
+      cards.forEach(card => {
+        const match = (currentFilter === 'all' || card.dataset.category === currentFilter)
+          && card.textContent.toLocaleLowerCase('vi').includes(keyword);
+        card.hidden = !match;
+        if (match) visible++;
+      });
+      emptyState.hidden = visible > 0;
+    }
+    search.addEventListener('input', renderCards);
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        currentFilter = button.dataset.filter;
+        filterButtons.forEach(b => {
+          const active = b === button;
+          b.classList.toggle('active', active);
+          b.setAttribute('aria-pressed', String(active));
+        });
+        renderCards();
+      });
+    });
+  </script>
+</body>
+</html>

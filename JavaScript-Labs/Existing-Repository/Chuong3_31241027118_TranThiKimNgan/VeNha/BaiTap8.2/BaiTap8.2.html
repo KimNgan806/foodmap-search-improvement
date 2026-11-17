@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The Bat Family</title>
+    <style>
+        * {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 20px 16px;
+    color: #111;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #fff;
+}
+
+#root {
+    width: 1024px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+#site-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 62px;
+    margin: 0;
+    background-color: #ccc;
+    color: #fff;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 26px;
+    text-shadow: 2px 2px 3px #333;
+}
+
+#site-header::before {
+    content: "";
+    display: block;
+    width: 48px;
+    height: 24px;
+    background: url("imgs/logo.png") center / contain no-repeat;
+}
+
+.superheroes {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 5px;
+    margin: 34px 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.superheroes li {
+    position: relative;
+    flex: 0 1 165px;
+    width: 165px;
+    min-width: 0;
+    transition: width .25s ease, flex-basis .25s ease;
+}
+
+.hero-header {
+    position: absolute;
+    z-index: 1;
+    top: 8px;
+    left: 0;
+    width: 100%;
+    color: #ddd;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 16px;
+    text-align: center;
+    text-shadow: 1px 1px 3px #111;
+    pointer-events: none;
+}
+
+.superheroes img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border: 2px solid #ddd;
+    border-radius: 16px;
+}
+
+.superheroes a {
+    display: none;
+    width: 100%;
+    padding: 8px 4px;
+    background: #777;
+    color: #fff;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 14px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.superheroes li:hover {
+    z-index: 2;
+    flex-basis: 220px;
+    width: 220px;
+}
+
+.superheroes li:hover a {
+    display: block;
+    text-decoration: underline;
+}
+
+@media (max-width: 720px) {
+    .superheroes {
+        flex-wrap: wrap;
+    }
+
+    .superheroes li {
+        flex: 0 1 calc(33.333% - 5px);
+        width: calc(33.333% - 5px);
+    }
+
+    .superheroes li:hover {
+        flex-basis: calc(40% - 5px);
+        width: calc(40% - 5px);
+    }
+}
+    </style>
+</head>
+<body>
+    <div id="root">
+        <h1 id="site-header"><span>The Bat family</span></h1>
+        <ul class="superheroes">
+            <li>
+                <strong class="hero-header">Batman</strong>
+                <img src="imgs/superhero-1.jpg" alt="">
+                <a href="https://en.wikipedia.org/wiki/Batman">Read more</a>
+            </li>
+            <li>
+                <strong class="hero-header">Batwing</strong>
+                <img src="imgs/superhero-2.jpg" alt="">
+                <a href="https://en.wikipedia.org/wiki/Batwing_(DC_Comics)">Read more</a>
+            </li>
+            <li>
+                <strong class="hero-header">Batgirl</strong>
+                <img src="imgs/superhero-3.jpg" alt="">
+                <a href="https://en.wikipedia.org/wiki/Batgirl">Read more</a>
+            </li>
+            <li>
+                <strong class="hero-header">Nightwing</strong>
+                <img src="imgs/superhero-4.jpg" alt="">
+                <a href="https://en.wikipedia.org/wiki/Nightwing">Read more</a>
+            </li>
+            <li>
+                <strong class="hero-header">Red Robin</strong>
+                <img src="imgs/superhero-5.jpg" alt="">
+                <a href="https://en.wikipedia.org/wiki/Red_Robin_(comics)">Read more</a>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
+

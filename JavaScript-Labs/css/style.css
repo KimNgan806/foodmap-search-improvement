@@ -1,0 +1,570 @@
+
+/* =========================================
+   1. BIẾN MÀU SẮC VÀ THIẾT LẬP CHUNG
+========================================= */
+
+:root {
+    --bg: #f6f8fc;
+    --surface: #ffffff;
+    --text: #17243b;
+    --muted: #64748b;
+    --primary: #245bd6;
+    --primary-dark: #1647b4;
+    --border: #e2e8f0;
+    --soft: #edf3ff;
+    --shadow: 0 8px 30px rgba(15, 23, 42, 0.06);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font: inherit;
+}
+
+.container {
+    width: min(1120px, 92%);
+    margin: 0 auto;
+}
+
+/* =========================================
+   2. HEADER VÀ THANH ĐIỀU HƯỚNG
+========================================= */
+
+.header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 18px 0;
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.logo span {
+    color: var(--primary);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+.nav-links a {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--muted);
+    transition: color 0.2s;
+}
+
+.nav-links a:hover {
+    color: var(--primary);
+}
+
+#theme-toggle {
+    padding: 10px 15px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--soft);
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* =========================================
+   3. HERO - GIỚI THIỆU CÁ NHÂN
+========================================= */
+
+.hero {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    align-items: center;
+    gap: 60px;
+    padding: 85px 0;
+}
+
+.eyebrow {
+    color: var(--primary);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.hero h1 {
+    font-size: clamp(34px, 5vw, 58px);
+    line-height: 1.15;
+    letter-spacing: -1.5px;
+    margin: 20px 0;
+}
+
+.hero h1 span {
+    display: block;
+    color: var(--primary);
+}
+
+.description {
+    color: var(--muted);
+    max-width: 620px;
+    font-size: 16px;
+    line-height: 1.9;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 30px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 13px 22px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    transition: all 0.2s ease;
+}
+
+.btn.primary {
+    background: var(--primary);
+    color: #ffffff;
+}
+
+.btn.primary:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+.btn.secondary {
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+.btn.secondary:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+/* =========================================
+   4. THẺ THÔNG TIN SINH VIÊN
+========================================= */
+
+.profile-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    padding: 35px;
+    text-align: center;
+    box-shadow: var(--shadow);
+}
+
+.avatar {
+    display: block;
+    width: 130px;
+    height: 130px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid var(--soft);
+}
+
+.profile-card h2 {
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+
+.profile-card > p {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.profile-info {
+    background: var(--soft);
+    border-radius: 12px;
+    padding: 18px;
+    margin: 25px 0;
+    text-align: left;
+}
+
+.profile-info p {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.profile-info p:last-child {
+    margin-bottom: 0;
+}
+
+.profile-card > a {
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 14px;
+}
+
+/* =========================================
+   5. CÁC SECTION CHUNG
+========================================= */
+
+.section {
+    padding: 75px 0;
+    scroll-margin-top: 85px;
+}
+
+.hero {
+    scroll-margin-top: 85px;
+}
+
+.section-heading {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 40px;
+}
+
+.section-heading h2 {
+    font-size: clamp(26px, 4vw, 38px);
+    margin: 10px 0;
+    letter-spacing: -0.5px;
+}
+
+.section-heading > p:last-child {
+    color: var(--muted);
+    font-size: 15px;
+}
+
+/* =========================================
+   6. DANH SÁCH BA BÀI LAB
+========================================= */
+
+.lab-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.lab-card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 28px;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.lab-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(15, 23, 42, 0.1);
+}
+
+.status {
+    align-self: flex-start;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.status.completed {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.status.pending {
+    background: #f1f5f9;
+    color: #64748b;
+}
+
+.lab-number {
+    color: var(--primary);
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin: 25px 0 10px;
+}
+
+.lab-card h3 {
+    font-size: 21px;
+    line-height: 1.4;
+    margin-bottom: 15px;
+}
+
+.lab-card > p:not(.lab-number) {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 25px;
+}
+
+.lab-link {
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 14px;
+    margin-top: auto;
+}
+
+.lab-link:hover {
+    text-decoration: underline;
+}
+
+/* =========================================
+   7. KIẾN THỨC VÀ KỸ NĂNG
+========================================= */
+
+.knowledge-section {
+    background: var(--soft);
+}
+
+.knowledge-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.knowledge-card {
+    min-width: 0;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 30px;
+}
+
+.knowledge-card h3 {
+    color: var(--primary);
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.knowledge-card p {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+/* =========================================
+   8. PHẦN TỰ ĐÁNH GIÁ
+========================================= */
+
+.reflection {
+    max-width: 900px;
+    margin: 0 auto;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 35px;
+    box-shadow: var(--shadow);
+}
+
+.reflection > p:first-child {
+    line-height: 1.9;
+    text-align: justify;
+}
+
+.reflection .note {
+    color: var(--muted);
+    font-size: 13px;
+    font-style: italic;
+    margin-top: 20px;
+}
+
+/* =========================================
+   9. FOOTER
+========================================= */
+
+.footer {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+}
+
+.footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 28px 0;
+}
+
+.footer p {
+    font-size: 14px;
+    color: var(--muted);
+}
+
+.footer a {
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 14px;
+}
+
+/* =========================================
+   10. DARK MODE
+========================================= */
+
+body.dark {
+    --bg: #101827;
+    --surface: #1b293c;
+    --text: #f0f5ff;
+    --muted: #b9c7dc;
+    --primary: #8eb7ff;
+    --primary-dark: #6d9cf4;
+    --border: #34455e;
+    --soft: #243550;
+    --shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+body.dark .status.pending {
+    background: #34455e;
+    color: #e2e8f0;
+}
+
+body.dark .status.completed {
+    background: #194b39;
+    color: #b8f7d1;
+}
+
+/* =========================================
+   11. RESPONSIVE - TABLET
+========================================= */
+
+@media (max-width: 900px) {
+
+    .navbar {
+        flex-wrap: wrap;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+        gap: 35px;
+        padding: 60px 0;
+    }
+
+    .profile-card {
+        max-width: 550px;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .lab-grid,
+    .knowledge-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* =========================================
+   12. RESPONSIVE - MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .navbar {
+        gap: 15px;
+    }
+
+    .nav-links {
+        order: 3;
+        width: 100%;
+        justify-content: space-between;
+        gap: 10px;
+    }
+
+    .nav-links a {
+        font-size: 12px;
+    }
+
+    #theme-toggle {
+        font-size: 12px;
+        padding: 8px 10px;
+    }
+
+    .hero {
+        padding: 45px 0;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    .description {
+        font-size: 14px;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .section {
+        padding: 50px 0;
+    }
+
+    .lab-grid,
+    .knowledge-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-card,
+    .lab-card,
+    .knowledge-card,
+    .reflection {
+        padding: 22px;
+    }
+
+    .section-heading h2 {
+        font-size: 28px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .btn,
+    .lab-card {
+        transition: none;
+    }
+}

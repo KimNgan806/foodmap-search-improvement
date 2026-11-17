@@ -114,5 +114,71 @@ chức năng tính tổng đơn hàng, xử lý thông tin
 sản phẩm và hỗ trợ xây dựng website thương mại
 điện tử.
 
-README sẽ được cập nhật khi hoàn thành Lab 09
-và Lab 10.
+## Lab 09 – JavaScript 2: DOM and Events
+
+### 1. Mục tiêu
+
+Lab 09 tập trung vào việc thao tác với Document Object
+Model (DOM), xử lý các sự kiện trên trang web và kiểm tra
+dữ liệu đầu vào của biểu mẫu bằng JavaScript.
+
+### 2. Nội dung thực hành
+
+| Bài tập | Nội dung | Kỹ thuật thực hành |
+|---|---|---|
+| Exercise 9.1 | Basic DOM Selection | getElementById, querySelector, innerHTML |
+| Exercise 9.2 | DOM Family Relations | parentNode, childNodes, nodeType |
+| Exercise 9.3 | Modifying the DOM | createElement, appendChild, removeChild |
+| Exercise 9.4 | Simple Event Handling | click, mouseover, mouseout |
+| Exercise 9.5 | Responding to Load Events | window.addEventListener("load") |
+| Exercise 9.6 | Debugging Events | Breakpoints, Scope, Watch |
+| Exercise 9.7 | Working with Forms | focus, blur |
+| Exercise 9.8 | Form Validation | submit, preventDefault |
+
+**Lưu ý:** Exercise 9.5 và 9.6 sử dụng chung
+file `lab09-walkthrough05.html` và JavaScript tương ứng.
+
+### 3. Cấu trúc thư mục
+
+```text
+Lab09/
+├── index.html
+├── lab09-walkthrough01.html
+├── lab09-walkthrough02.html
+├── lab09-walkthrough03.html
+├── lab09-walkthrough04.html
+├── lab09-walkthrough05.html
+├── lab09-walkthrough07.html
+├── lab09-walkthrough08.html
+├── css/
+├── js/
+├── images/
+└── flags/
+```
+
+### 4. Kết quả thực hiện
+
+- Truy xuất và thay đổi nội dung phần tử HTML.
+- Tạo và xóa phần tử thông qua DOM.
+- Xử lý sự kiện click, mouseover, focus và blur.
+- Sử dụng DevTools để kiểm tra và gỡ lỗi JavaScript.
+- Kiểm tra biểu mẫu đăng ký và hiển thị thông báo lỗi.
+- Xây dựng trang danh sách bài thực hành Lab 09.
+
+### 5. Truy cập bài thực hành
+
+- [Danh sách bài tập Lab 09](ch09-lab-start-master/index.html)
+- [Exercise 9.1](ch09-lab-start-master/lab09-walkthrough01.html)
+- [Exercise 9.2](ch09-lab-start-master/lab09-walkthrough02.html)
+- [Exercise 9.3](ch09-lab-start-master/lab09-walkthrough03.html)
+- [Exercise 9.4](ch09-lab-start-master/lab09-walkthrough04.html)
+- [Exercise 9.5 và 9.6](ch09-lab-start-master/lab09-walkthrough05.html)
+- [Exercise 9.7](ch09-lab-start-master/lab09-walkthrough07.html)
+- [Exercise 9.8](ch09-lab-start-master/lab09-walkthrough08.html)
+
+### 6. Ứng dụng vào thương mại điện tử
+
+Kiến thức từ Lab 09 có thể áp dụng để xây dựng
+biểu mẫu đăng ký tài khoản, xác thực dữ liệu khách hàng,
+cập nhật thông tin sản phẩm và xử lý các tương tác
+trong giỏ hàng trên website thương mại điện tử.

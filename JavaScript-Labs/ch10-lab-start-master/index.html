@@ -1,0 +1,1047 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Lab 10 jQuery - Portfolio thực hành của Trần Thị Kim Ngân, sinh viên UEH.">
+  <title>Lab 10 | jQuery - Trần Thị Kim Ngân</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #f5f8fc;
+      --surface: #ffffff;
+      --text: #172b45;
+      --muted: #65768c;
+      --border: #e1e9f3;
+      --navy: #102440;
+      --blue: #326fcb;
+      --soft-blue: #ebf3ff;
+      --accent: #efc69c;
+      --shadow: 0 12px 35px rgba(16,36,64,.055);
+    }
+
+    html.dark-mode {
+      --bg: #0e192a;
+      --surface: #172840;
+      --text: #eef5ff;
+      --muted: #afc1d7;
+      --border: #2a405d;
+      --soft-blue: #203a5a;
+      --blue: #93bdff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Be Vietnam Pro", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      transition: background .25s, color .25s;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button, input {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .container {
+      width: min(1150px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    /* THANH ĐIỀU HƯỚNG */
+    .navbar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-content {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      font-size: 14px;
+    }
+
+    .brand-logo {
+      display: grid;
+      place-items: center;
+      width: 43px;
+      height: 43px;
+      border-radius: 12px;
+      background: #102440;
+      color: white;
+      font-size: 13px;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-link {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .theme-button {
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      font-size: 12px;
+    }
+
+    /* GIỚI THIỆU */
+    .hero {
+      display: grid;
+      grid-template-columns: 1.4fr .65fr;
+      align-items: center;
+      gap: 40px;
+      margin-top: 35px;
+      padding: 55px;
+      border-radius: 25px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 85% 10%,
+          rgba(100,175,245,.22),transparent 40%),
+        linear-gradient(130deg,#102440,#1d436e);
+      color: white;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 11px;
+      letter-spacing: 2px;
+      font-weight: 800;
+      color: #b8dcff;
+      margin-bottom: 17px;
+    }
+
+    .hero h1 {
+      margin: 0 0 20px;
+      font-size: clamp(38px,5.5vw,65px);
+      line-height: 1.14;
+      letter-spacing: -2px;
+    }
+
+    .hero h1 span {
+      display: block;
+      color: var(--accent);
+    }
+
+    .hero-description {
+      max-width: 590px;
+      color: #d3e2f3;
+      font-size: 13px;
+      line-height: 2;
+    }
+
+    .tech-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin: 24px 0 31px;
+    }
+
+    .tech-tags span {
+      padding: 7px 13px;
+      border: 1px solid rgba(255,255,255,.25);
+      border-radius: 30px;
+      font-size: 11px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 18px;
+      border-radius: 10px;
+      font-size: 12px;
+      font-weight: 700;
+      transition: transform .2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .btn-primary {
+      background: white;
+      color: #102440;
+    }
+
+    .btn-outline {
+      border: 1px solid rgba(255,255,255,.4);
+      color: white;
+    }
+
+    /* THÔNG TIN CÁ NHÂN */
+    .profile {
+      padding: 26px 20px;
+      text-align: center;
+      border-radius: 19px;
+      border: 1px solid rgba(255,255,255,.2);
+      background: rgba(255,255,255,.08);
+    }
+
+    .avatar {
+      width: 112px;
+      height: 112px;
+      display: block;
+      margin: 0 auto 17px;
+      object-fit: cover;
+      border: 4px solid white;
+      border-radius: 50%;
+    }
+
+    .profile h2 {
+      margin: 0 0 7px;
+      font-size: 17px;
+    }
+
+    .profile p {
+      margin: 5px 0;
+      font-size: 11px;
+      color: #d5e4f5;
+    }
+
+    .profile-divider {
+      height: 1px;
+      margin: 19px 0;
+      background: rgba(255,255,255,.2);
+    }
+
+    .profile-badge {
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    /* THỐNG KÊ */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 18px;
+      margin: 22px 0 70px;
+    }
+
+    .stat {
+      padding: 23px 26px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 15px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 29px;
+      color: var(--text);
+      line-height: 1.3;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    /* DANH MỤC BÀI TẬP */
+    .section-header {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 22px;
+      margin-bottom: 25px;
+    }
+
+    .section-label {
+      color: var(--blue);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.7px;
+    }
+
+    .section-header h2 {
+      margin: 7px 0;
+      font-size: clamp(25px,3vw,34px);
+      letter-spacing: -.8px;
+    }
+
+    .section-header p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .search-input {
+      width: 290px;
+      padding: 13px 16px;
+      border: 1px solid var(--border);
+      border-radius: 11px;
+      outline: none;
+      background: var(--surface);
+      color: var(--text);
+      font-size: 12px;
+    }
+
+    .search-input:focus {
+      border-color: var(--blue);
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-bottom: 25px;
+    }
+
+    .filter {
+      border-radius: 25px;
+      padding: 9px 15px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .filter.active {
+      color: white;
+      background: #102440;
+      border-color: #102440;
+    }
+
+    .exercise-grid {
+      display: grid;
+      grid-template-columns: repeat(2,minmax(0,1fr));
+      gap: 19px;
+    }
+
+    .exercise-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 245px;
+      padding: 26px;
+      border: 1px solid var(--border);
+      border-radius: 17px;
+      background: var(--surface);
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .exercise-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 15px;
+    }
+
+    .exercise-number {
+      color: #a9c2e0;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+
+    .category {
+      padding: 6px 11px;
+      border-radius: 7px;
+      background: var(--soft-blue);
+      color: var(--blue);
+      font-size: 10px;
+      font-weight: 800;
+    }
+
+    .exercise-card h3 {
+      font-size: 17px;
+      margin: 0 0 11px;
+    }
+
+    .exercise-card p {
+      font-size: 12px;
+      color: var(--muted);
+      margin: 0 0 25px;
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding-top: 15px;
+      margin-top: auto;
+      border-top: 1px solid var(--border);
+    }
+
+    .status {
+      font-size: 10px;
+      font-weight: 700;
+      color: #249575;
+    }
+
+    .card-link {
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .card-link:hover {
+      text-decoration: underline;
+    }
+
+    .empty-state {
+      padding: 45px;
+      text-align: center;
+      background: var(--surface);
+      border-radius: 15px;
+      color: var(--muted);
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    /* TỔNG KẾT CÁ NHÂN */
+    .reflection {
+      margin: 55px 0 60px;
+      padding: 34px;
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--blue);
+      border-radius: 16px;
+      background: var(--surface);
+    }
+
+    .reflection h2 {
+      margin: 0 0 12px;
+      font-size: 19px;
+    }
+
+    .reflection p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 2;
+      margin: 0;
+    }
+
+    .lab-note {
+      margin-top: 20px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 25px 0;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 15px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .footer-content a {
+      font-weight: 700;
+      color: var(--blue);
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible {
+      outline: 3px solid #8fc5ff;
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 850px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 36px;
+      }
+
+      .profile {
+        max-width: 430px;
+      }
+
+      .section-header {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .search-input {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        width: calc(100% - 28px);
+      }
+
+      .nav-link {
+        display: none;
+      }
+
+      .hero {
+        padding: 29px 23px;
+        margin-top: 15px;
+      }
+
+      .hero h1 {
+        letter-spacing: -1px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-bottom: 45px;
+      }
+
+      .stat {
+        padding: 18px;
+      }
+
+      .stat:last-child {
+        grid-column: span 2;
+      }
+
+      .exercise-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .exercise-card {
+        min-height: auto;
+      }
+
+      .reflection {
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ĐIỀU HƯỚNG -->
+  <header class="navbar">
+    <nav class="container nav-content" aria-label="Điều hướng">
+      <a href="../index.html" class="brand">
+        <span class="brand-logo">KN.</span>
+        <span>Kim Ngan / JavaScript Labs</span>
+      </a>
+
+      <div class="nav-actions">
+        <a class="nav-link" href="../index.html">
+          Về Portfolio tổng thể ↗
+        </a>
+
+        <button id="themeToggle"
+                class="theme-button"
+                type="button"
+                aria-pressed="false">
+          🌙 Giao diện tối
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+
+    <!-- GIỚI THIỆU LAB 10 -->
+    <section class="hero">
+      <div class="hero-content">
+        <span class="eyebrow">
+          UEH · PHÁT TRIỂN ỨNG DỤNG TMĐT
+        </span>
+
+        <h1>
+          JavaScript 3
+          <span>jQuery.</span>
+        </h1>
+
+        <p class="hero-description">
+          Chào mừng đến với Lab 10 trong hành trình
+          thực hành JavaScript của tôi. Tại đây,
+          tôi tổng hợp 10 bài tập về thư viện jQuery,
+          từ lựa chọn phần tử, xử lý sự kiện,
+          thao tác với DOM đến tạo hiệu ứng và
+          truy xuất dữ liệu bằng AJAX.
+        </p>
+
+        <div class="tech-tags">
+          <span>jQuery Selectors</span>
+          <span>Event Handling</span>
+          <span>DOM Manipulation</span>
+          <span>Animation</span>
+          <span>AJAX & JSON</span>
+        </div>
+
+        <div class="hero-buttons">
+          <a href="#exercises" class="btn btn-primary">
+            Khám phá 10 bài tập ↓
+          </a>
+
+          <a href="https://github.com/KimNgan806/foodmap-search-improvement"
+             class="btn btn-outline"
+             target="_blank"
+             rel="noopener noreferrer">
+            Xem GitHub ↗
+          </a>
+        </div>
+      </div>
+
+      <!-- THÔNG TIN SINH VIÊN -->
+      <aside class="profile">
+        <img
+          src="../image/Trần Thị Kim Ngân.jpg"
+          alt="Ảnh đại diện Trần Thị Kim Ngân"
+          class="avatar">
+
+        <h2>Trần Thị Kim Ngân</h2>
+        <p>MSSV: 31241027118</p>
+        <p>Lớp học phần: 26C1INF50902702</p>
+        <p>Đại học Kinh tế TP. Hồ Chí Minh</p>
+        <p>Ngành Thương mại điện tử</p>
+
+        <div class="profile-divider"></div>
+
+        <span class="profile-badge">
+          LAB 10 · JAVASCRIPT 3
+        </span>
+      </aside>
+    </section>
+
+    <!-- TỔNG QUAN -->
+    <section class="stats" aria-label="Tổng quan">
+      <div class="stat">
+        <strong>10</strong>
+        <span>Bài thực hành</span>
+      </div>
+
+      <div class="stat">
+        <strong>05</strong>
+        <span>Nhóm kiến thức</span>
+      </div>
+
+      <div class="stat">
+        <strong>jQuery</strong>
+        <span>DOM · Events · Effects · AJAX</span>
+      </div>
+    </section>
+
+    <!-- DANH SÁCH BÀI TẬP -->
+    <section id="exercises">
+      <div class="section-header">
+        <div>
+          <span class="section-label">
+            PRACTICE COLLECTION
+          </span>
+
+          <h2>Danh mục bài thực hành</h2>
+
+          <p>
+            10 bài tập được phân nhóm theo kỹ thuật.
+            Có thể tìm kiếm hoặc lọc để truy cập nhanh.
+          </p>
+        </div>
+
+        <input
+          type="search"
+          id="searchExercise"
+          class="search-input"
+          placeholder="Tìm bài tập hoặc kỹ thuật..."
+          aria-label="Tìm kiếm bài tập">
+      </div>
+
+      <!-- BỘ LỌC -->
+      <div class="filters" aria-label="Lọc bài tập">
+        <button class="filter active"
+                type="button"
+                data-filter="all">
+          Tất cả (10)
+        </button>
+
+        <button class="filter"
+                type="button"
+                data-filter="foundation">
+          Nền tảng
+        </button>
+
+        <button class="filter"
+                type="button"
+                data-filter="events">
+          Events
+        </button>
+
+        <button class="filter"
+                type="button"
+                data-filter="dom">
+          DOM
+        </button>
+
+        <button class="filter"
+                type="button"
+                data-filter="effects">
+          Effects
+        </button>
+
+        <button class="filter"
+                type="button"
+                data-filter="ajax">
+          AJAX
+        </button>
+      </div>
+
+      <div class="exercise-grid">
+
+        <!-- 10.1 -->
+        <article class="exercise-card" data-category="foundation">
+          <div class="card-top">
+            <span class="exercise-number">10.1</span>
+            <span class="category">NỀN TẢNG</span>
+          </div>
+          <h3>Set Up jQuery</h3>
+          <p>
+            Thiết lập thư viện jQuery và tìm hiểu
+            cách sử dụng CDN hoặc file JavaScript cục bộ.
+          </p>
+          <div class="card-footer">
+            <span class="status">✓ Đã thực hành</span>
+            <a href="lab10-walkthrough01.html" class="card-link">
+              Mở bài tập ↗
+            </a>
+          </div>
+        </article>
+
+        <!-- 10.2 -->
+        <article class="exercise-card" data-category="foundation">
+          <div class="card-top">
+            <span class="exercise-number">10.2</span>
+            <span class="category">NỀN TẢNG</span>
+          </div>
+          <h3>Basic Selectors</h3>
+          <p>
+            Sử dụng bộ chọn jQuery để truy xuất
+            phần tử, thay đổi nội dung và thuộc tính.
+          </p>
+          <div class="card-footer">
+            <span class="status">✓ Đã thực hành</span>
+            <a href="lab10-walkthrough01.html" class="card-link">
+              Mở bài tập ↗
+            </a>
+          </div>
+        </article>
+
+        <!-- 10.3 -->
+        <article class="exercise-card" data-category="foundation">
+          <div class="card-top">
+            <span class="exercise-number">10.3</span>
+            <span class="category">NỀN TẢNG</span>
+          </div>
+          <h3>Advanced Selectors</h3>
+          <p>
+            Sử dụng bộ chọn nâng cao để thao tác
+            với phần tử biểu mẫu và các nhóm HTML.
+          </p>
+          <div class="card-footer">
+            <span class="status">✓ Đã thực hành</span>
+            <a href="lab10-walkthrough03.html" class="card-link">
+              Mở bài tập ↗
+            </a>
+          </div>
+        </article>
+
+        <!-- 10.4 -->
+        <article class="exercise-card" data-category="events">
+          <div class="card-top">
+            <span class="exercise-number">10.4</span>
+            <span class="category">EVENTS</span>
+          </div>
+          <h3>jQuery Listeners</h3>
+          <p>
+            Đăng ký và hủy sự kiện bằng các phương thức
+            .on() và .off(), xử lý tương tác chuột.
+          </p>
+          <div class="card-footer">
+            <span class="status">✓ Đã thực hành</span>
+            <a href="lab10-walkthrough04.html" class="card-link">
+              Mở bài tập ↗
+            </a>
+          </div>
+        </article>
+
+        <!-- 10.5 -->
+        <article class="exercise-card" data-category="dom">
+          <div class="card-top">
+            <span class="exercise-number">10.5</span>
+            <span class="category">DOM</span>
+          </div>
+          <h3>Inserting DOM Elements</h3>
+          <p>
+            Thêm phần tử và nội dung động vào trang
+            bằng các phương thức thao tác DOM của jQuery.
+          </p>
+          <div class="card-footer">
+            <span class="status">✓ Đã thực hành</span>
+            <a href="lab10-walkthrough05.html" class="card-link">
+              Mở bài tập ↗
+            </a>
+          </div>
+        </article>
+
+        <!-- 10.6 -->
+        <article class="exercise-card" data-category="effects">
+          <div class="card-top">
+            <span class="exercise-number">10.6</span>
+            <span class="category">EFFECTS</span>
+          </div>
+          <h3>Simple jQuery Animation</h3>
+          <p>
+            Tạo hiệu ứng hiển thị, làm mờ và trượt
+            nội dung bằng fade(), slide().
+          </p>
+          <div class="card-footer">
+            <span class="status">✓ Đã thực hành</span>
+            <a href="lab10-walkthrough06.html" class="card-link">
+              Mở bài tập ↗
+            </a>
+          </div>
+        </article>
+
+        <!-- 10.7 -->
+        <article class="exercise-card" data-category="effects">
+          <div class="card-top">
+            <span class="exercise-number">10.7</span>
+            <span class="category">EFFECTS</span>
+          </div>
+          <h3>More jQuery Animation</h3>
+          <p>
+            Tạo hiệu ứng xem trước hình ảnh lớn
+            khi di chuyển chuột qua ảnh thu nhỏ.
+          </p>
+          <div class="card-footer">
+            <span class="status">✓ Đã thực hành</span>
+            <a href="lab10-walkthrough07.html" class="card-link">
+              Mở bài tập ↗
+            </a>
+          </div>
+        </article>
+
+        <!-- 10.8 -->
+        <article class="exercise-card" data-category="effects">
+          <div class="card-top">
+            <span class="exercise-number">10.8</span>
+            <span class="category">EFFECTS</span>
+          </div>
+          <h3>Complex Animations</h3>
+          <p>
+            Kết hợp nhiều thuộc tính và phương thức
+            .animate() để tạo chuyển động liên tiếp.
+          </p>
+          <div class="card-footer">
+            <span class="status">✓ Đã thực hành</span>
+            <a href="lab10-walkthrough08.html" class="card-link">
+              Mở bài tập ↗
+            </a>
+          </div>
+        </article>
+
+        <!-- 10.9 -->
+        <article class="exercise-card" data-category="ajax">
+          <div class="card-top">
+            <span class="exercise-number">10.9</span>
+            <span class="category">AJAX</span>
+          </div>
+          <h3>GET Requests</h3>
+          <p>
+            Thực hiện yêu cầu AJAX GET, nhận dữ liệu
+            JSON và hiển thị thông tin lên trang.
+          </p>
+          <div class="card-footer">
+            <span class="status">✓ Đã thực hành</span>
+            <a href="lab10-walkthrough09.html" class="card-link">
+              Mở bài tập ↗
+            </a>
+          </div>
+        </article>
+
+        <!-- 10.10 -->
+        <article class="exercise-card" data-category="ajax">
+          <div class="card-top">
+            <span class="exercise-number">10.10</span>
+            <span class="category">AJAX</span>
+          </div>
+          <h3>jqXHR Handling</h3>
+          <p>
+            Xử lý kết quả và lỗi của yêu cầu AJAX
+            bằng .done(), .fail() và .always().
+          </p>
+          <div class="card-footer">
+            <span class="status">✓ Đã thực hành</span>
+            <a href="lab10-walkthrough10.html" class="card-link">
+              Mở bài tập ↗
+            </a>
+          </div>
+        </article>
+
+      </div>
+
+      <p class="empty-state" id="emptyState" hidden>
+        Không tìm thấy bài thực hành phù hợp.
+      </p>
+
+      </section>
+
+    <!-- TỔNG KẾT -->
+    <section class="reflection">
+      <h2>Điều tôi học được từ Lab 10</h2>
+      <p>
+        Qua Lab 10, em đã được thực hành cách sử dụng
+        thư viện jQuery để lựa chọn và thao tác với
+        các phần tử HTML bằng cú pháp ngắn gọn.
+        Em cũng tìm hiểu cách xử lý sự kiện,
+        xây dựng hiệu ứng tương tác và truy xuất
+        dữ liệu bằng AJAX. Đặc biệt, những kiến thức
+        về hiệu ứng hình ảnh và tải dữ liệu có thể
+        áp dụng để cải thiện trải nghiệm tìm kiếm,
+        xem sản phẩm và cập nhật nội dung động
+        trên website thương mại điện tử.
+      </p>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-content">
+      <span>© 2026 Trần Thị Kim Ngân · UEH</span>
+      <span>Lab 10 / JavaScript 3: jQuery</span>
+      <a href="../index.html">Quay về Portfolio ↑</a>
+    </div>
+  </footer>
+
+  <script>
+    // Chuyển đổi giao diện sáng và tối
+    const themeButton =
+      document.getElementById("themeToggle");
+
+    themeButton.addEventListener("click", function () {
+      const isDark =
+        document.documentElement.classList.toggle("dark-mode");
+
+      themeButton.textContent = isDark
+        ? "☀️ Giao diện sáng"
+        : "🌙 Giao diện tối";
+
+      themeButton.setAttribute(
+        "aria-pressed",
+        String(isDark)
+      );
+    });
+
+    // Tìm kiếm và lọc các bài thực hành
+    const searchInput =
+      document.getElementById("searchExercise");
+
+    const filterButtons =
+      document.querySelectorAll(".filter");
+
+    const exerciseCards =
+      document.querySelectorAll(".exercise-card");
+
+    const emptyState =
+      document.getElementById("emptyState");
+
+    let activeFilter = "all";
+
+    function filterExercises() {
+      const keyword =
+        searchInput.value.toLocaleLowerCase("vi").trim();
+
+      let visibleCount = 0;
+
+      exerciseCards.forEach(function (card) {
+        const matchesCategory =
+          activeFilter === "all" ||
+          card.dataset.category === activeFilter;
+
+        const matchesKeyword =
+          card.textContent
+            .toLocaleLowerCase("vi")
+            .includes(keyword);
+
+        const visible =
+          matchesCategory && matchesKeyword;
+
+        card.hidden = !visible;
+
+        if (visible) {
+          visibleCount++;
+        }
+      });
+
+      emptyState.hidden = visibleCount !== 0;
+    }
+
+    searchInput.addEventListener(
+      "input",
+      filterExercises
+    );
+
+    filterButtons.forEach(function (button) {
+      button.addEventListener("click", function () {
+        filterButtons.forEach(function (item) {
+          item.classList.remove("active");
+        });
+
+        button.classList.add("active");
+        activeFilter = button.dataset.filter;
+
+        filterExercises();
+      });
+    });
+  </script>
+</body>
+</html>

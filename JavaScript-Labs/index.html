@@ -1,27 +1,20 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio JavaScript Labs của Trần Thị Kim Ngân, sinh viên UEH - tổng hợp Lab 08, 09 và 10.">
+    <title>JavaScript Labs | Trần Thị Kim Ngân</title>
 
-    <title>JavaScript Labs | My Learning Portfolio</title>
-
-    <!-- Liên kết CSS -->
+    <!-- Giữ nguyên CSS và JavaScript của portfolio hiện tại -->
     <link rel="stylesheet" href="css/style.css">
-
-    <!-- Liên kết JavaScript -->
     <script src="js/main.js" defer></script>
 </head>
-
 <body>
-
     <!-- 1. THANH ĐIỀU HƯỚNG -->
     <header class="header">
-        <nav class="container navbar">
-            <a href="index.html" class="logo">
-                JS<span>Labs.</span>
-            </a>
+        <nav class="container navbar" aria-label="Điều hướng chính">
+            <a href="index.html" class="logo">JS<span>Labs.</span></a>
 
             <div class="nav-links">
                 <a href="#gioi-thieu">Giới thiệu</a>
@@ -30,312 +23,179 @@
                 <a href="#tu-danh-gia">Tổng kết</a>
             </div>
 
-            <button type="button" id="theme-toggle"
-                    aria-pressed="false">
+            <button type="button" id="theme-toggle" aria-pressed="false">
                 🌙 Giao diện tối
             </button>
         </nav>
     </header>
 
     <main>
-
         <!-- 2. GIỚI THIỆU CÁ NHÂN -->
         <section id="gioi-thieu" class="hero container">
-
             <div class="hero-content">
-                <p class="eyebrow">
-                    WEB DEVELOPMENT PORTFOLIO
-                </p>
-
-                <h1>
-                    Hành trình học tập
-                    <span>JavaScript</span>
-                </h1>
+                <p class="eyebrow">WEB DEVELOPMENT PORTFOLIO · UEH</p>
+                <h1>Hành trình học tập <span>JavaScript</span></h1>
 
                 <p class="description">
-                    Chào mừng đến với portfolio thực hành
-                    JavaScript của em trong học phần
-                    Phát triển ứng dụng Thương mại điện tử.
-
-                    Website tổng hợp quá trình học tập,
-                    thực hành lập trình và vận dụng JavaScript
-                    vào việc xây dựng các chức năng tương tác
-                    trên website thương mại điện tử.
+                   Đây là nơi em ghi lại hành trình khám phá và ứng dụng
+    JavaScript trong học phần Phát triển ứng dụng Thương mại
+    điện tử. Thông qua ba bài thực hành, em từng bước xây dựng
+    nền tảng lập trình, phát triển khả năng thao tác với giao diện
+    và xử lý các tương tác của người dùng. Mỗi bài Lab không chỉ
+    thể hiện những kiến thức đã tiếp thu mà còn là cơ hội để em
+    vận dụng chúng vào việc xây dựng các chức năng thiết thực
+    cho website thương mại điện tử.
                 </p>
 
                 <div class="hero-actions">
-                    <a href="#danh-sach-lab"
-                       class="btn primary">
-                        Khám phá bài thực hành
-                    </a>
-
+                    <a href="#danh-sach-lab" class="btn primary">Khám phá bài thực hành</a>
                     <a href="https://github.com/KimNgan806/foodmap-search-improvement"
-                       class="btn secondary"
-                       target="_blank"
-                       rel="noopener noreferrer">
+                       class="btn secondary" target="_blank" rel="noopener noreferrer">
                         GitHub Repository
                     </a>
                 </div>
             </div>
 
-            <!-- THÔNG TIN SINH VIÊN -->
             <aside class="profile-card">
-
                 <img src="image/Trần Thị Kim Ngân.jpg"
-                     alt="Ảnh đại diện sinh viên"
-                     class="avatar">
-
+                     alt="Ảnh đại diện sinh viên Trần Thị Kim Ngân" class="avatar">
                 <h2>Trần Thị Kim Ngân</h2>
-
-                <p>Sinh viên ngành Thương mại điện tử</p>
+                <p>Sinh viên ngành Thương mại điện tử · UEH</p>
 
                 <div class="profile-info">
-                    <p>
-                        <strong>MSSV:</strong>
-                        31241027118
-                    </p>
-
-                    <p>
-                        <strong>Lớp học phần:</strong>
-                        26C1INF50902702
-                    </p>
-
-                    <p>
-                        <strong>Học phần:</strong>
-                        Phát triển ứng dụng TMĐT
-                    </p>
+                    <p><strong>MSSV:</strong> 31241027118</p>
+                    <p><strong>Lớp học phần:</strong> 26C1INF50902702</p>
+                    <p><strong>Học phần:</strong> Phát triển ứng dụng TMĐT</p>
                 </div>
 
                 <a href="https://github.com/KimNgan806"
-                   target="_blank"
-                   rel="noopener noreferrer">
-                    Xem GitHub cá nhân
-                </a>
-
+                   target="_blank" rel="noopener noreferrer">Xem GitHub cá nhân</a>
             </aside>
         </section>
 
-        <!-- 3. DANH SÁCH CÁC BÀI LAB -->
-        <section id="danh-sach-lab"
-                 class="section container">
-
+        <!-- 3. DANH SÁCH BA BÀI LAB -->
+        <section id="danh-sach-lab" class="section container">
             <div class="section-heading">
                 <p class="eyebrow">PRACTICAL PROJECTS</p>
-
                 <h2>Danh sách bài thực hành</h2>
-
-                <p>
-                    Tổng hợp ba bài Lab thực hành JavaScript,
-                    từ kiến thức nền tảng đến xây dựng các
-                    chức năng tương tác trên website.
-                </p>
+                <p>Ba Lab từ kiến thức JavaScript nền tảng đến thao tác DOM, sự kiện và jQuery.</p>
             </div>
 
             <div class="lab-grid">
-
                 <!-- LAB 08 -->
                 <article class="lab-card">
-                    <span class="status completed">
-                        Đã thực hành
-                    </span>
-
+                    <span class="status completed">Đã hoàn thành</span>
                     <p class="lab-number">LAB 08</p>
-
-                    <h3>
-                        JavaScript 1:
-                        Language Foundations
-                    </h3>
-
+                    <h3>JavaScript 1: Language Foundations</h3>
                     <p>
-                        Thực hành cú pháp JavaScript, biến,
-                        kiểu dữ liệu, hàm, mảng, đối tượng
-                        và sử dụng Browser Console.
+                        Thực hành 11 bài tập về cú pháp JavaScript, biến, kiểu dữ liệu,
+                        điều kiện, vòng lặp, hàm, mảng, đối tượng và Browser Console.
                     </p>
-
-                    <a href="Lab08/" class="lab-link">
-                        Xem các Exercise
+                    <a href="ch08-lab-start-master/index.html" class="lab-link">
+                        Xem 11 bài thực hành
                     </a>
                 </article>
 
                 <!-- LAB 09 -->
-                
-<!-- LAB 09 -->
-<article class="lab-card">
-    <span class="status completed">
-        Đã hoàn thành
-    </span>
-
-    <p class="lab-number">LAB 09</p>
-
-    <h3>
-        JavaScript 2:
-        DOM and Events
-    </h3>
-
-    <p>
-        Đã hoàn thành 8 bài thực hành về truy xuất
-        và thay đổi các phần tử DOM, xử lý sự kiện
-        click, mouseover, focus, blur và load.
-        Thực hành gỡ lỗi bằng Developer Tools,
-        kiểm tra dữ liệu biểu mẫu và hiển thị
-        thông báo lỗi cho người dùng.
-    </p>
-
-    <a href="ch09-lab-start-master/index.html"
-       class="lab-link">
-        Xem 8 bài thực hành
-    </a>
-</article>
-
-
-                <!-- LAB 10 -->
                 <article class="lab-card">
-                    <span class="status pending">
-                        Chưa thực hiện
-                    </span>
-
-                    <p class="lab-number">LAB 10</p>
-
-                    <h3>Xem Lab 09
-                        JavaScript 3:
-                        jQuery
-                    </h3>
-
+                    <span class="status completed">Đã hoàn thành</span>
+                    <p class="lab-number">LAB 09</p>
+                    <h3>JavaScript 2: DOM and Events</h3>
                     <p>
-                        Thực hành jQuery Selectors, Events,
-                        thao tác DOM, Animation và thực hiện
-                        GET Requests.
+                        Thực hành 8 bài tập về truy xuất và thay đổi DOM, xử lý sự kiện,
+                        gỡ lỗi bằng Developer Tools và xác thực dữ liệu biểu mẫu.
                     </p>
-
-                    <a href="Lab10/" class="lab-link">
-                        Xem Lab 10
+                    <a href="ch09-lab-start-master/index.html" class="lab-link">
+                        Xem 8 bài thực hành
                     </a>
                 </article>
 
+                <!-- LAB 10 -->
+                <article class="lab-card">
+                    <span class="status completed">Đã hoàn thành</span>
+                    <p class="lab-number">LAB 10</p>
+                    <h3>JavaScript 3: jQuery</h3>
+                    <p>
+                        Thực hành 10 bài tập với jQuery Selectors, xử lý sự kiện,
+                        thao tác DOM, hiệu ứng Animation và truy xuất dữ liệu AJAX/JSON.
+                    </p>
+                    <a href="ch10-lab-start-master/index.html" class="lab-link">
+                        Xem 10 bài thực hành
+                    </a>
+                </article>
             </div>
         </section>
 
         <!-- 4. KIẾN THỨC VÀ KỸ NĂNG -->
-        <section id="kien-thuc"
-                 class="section knowledge-section">
-
+        <section id="kien-thuc" class="section knowledge-section">
             <div class="container">
-
                 <div class="section-heading">
                     <p class="eyebrow">LEARNING OUTCOMES</p>
                     <h2>Kiến thức và kỹ năng</h2>
                 </div>
 
                 <div class="knowledge-grid">
-
                     <article class="knowledge-card">
                         <h3>01. JavaScript Foundations</h3>
-
                         <p>
-                            Qua Lab 08, em đã thực hành
-                            nhúng JavaScript vào HTML,
-                            khai báo biến và xây dựng hàm.
-
-                            Em cũng được làm quen với
-                            String, Date, Math, Array,
-                            Object và Browser Console.
+                            Nắm được các kiến thức cơ bản về biến, kiểu dữ liệu, hàm,
+                            điều kiện, vòng lặp, mảng và đối tượng; biết chạy thử và
+                            quan sát kết quả JavaScript trong trình duyệt.
                         </p>
                     </article>
 
-                    
-<article class="knowledge-card">
-    <h3>02. DOM & Events</h3>
-
-    <p>
-        Qua Lab 09, em đã thực hành các phương thức
-        getElementById(), querySelector(),
-        querySelectorAll() và thao tác với cây DOM.
-
-        Em cũng biết cách tạo, thêm, xóa phần tử HTML;
-        đăng ký sự kiện bằng addEventListener();
-        xử lý click, mouseover, focus, blur và load.
-
-        Đặc biệt, em đã sử dụng Developer Tools
-        để gỡ lỗi và kiểm tra biểu mẫu đăng ký
-        trước khi gửi dữ liệu.
-    </p>
-</article>
-
+                    <article class="knowledge-card">
+                        <h3>02. DOM &amp; Events</h3>
+                        <p>
+                            Truy xuất phần tử HTML, duyệt cây DOM, thêm hoặc xóa phần tử,
+                            xử lý click, mouseover, focus, blur và load; sử dụng
+                            Developer Tools để gỡ lỗi và kiểm tra biểu mẫu.
+                        </p>
+                    </article>
 
                     <article class="knowledge-card">
                         <h3>03. jQuery</h3>
-
                         <p>
-                            Trong Lab 10, em sẽ thực hành
-                            sử dụng jQuery Selectors,
-                            xử lý sự kiện, thao tác DOM,
-                            tạo hiệu ứng và lấy dữ liệu
-                            bằng GET Requests.
+                            Sử dụng jQuery Selectors, on(), off() và các phương thức
+                            thao tác DOM; tạo hiệu ứng Fade, Slide, Animate và thực hiện
+                            yêu cầu AJAX, xử lý dữ liệu JSON.
                         </p>
                     </article>
-
                 </div>
             </div>
         </section>
 
         <!-- 5. TỰ ĐÁNH GIÁ -->
-        <section id="tu-danh-gia"
-                 class="section container">
-
+        <section id="tu-danh-gia" class="section container">
             <div class="section-heading">
                 <p class="eyebrow">SELF REFLECTION</p>
-
                 <h2>Tự đánh giá quá trình học tập</h2>
             </div>
 
-            
-<div class="reflection">
-    <p>
-        Qua hai bài thực hành Lab 08 và Lab 09,
-        em đã củng cố kiến thức về biến, kiểu dữ liệu,
-        điều kiện, vòng lặp, hàm và thao tác với
-        Document Object Model (DOM).
-
-        Lab 09 là phần em cảm thấy hữu ích nhất,
-        đồng thời cũng có nhiều thử thách khi phải
-        xác định đúng phần tử HTML và xử lý các
-        sự kiện tương tác của người dùng.
-
-        Những kiến thức đã học giúp em hiểu cách
-        xây dựng biểu mẫu đăng ký, kiểm tra dữ liệu
-        đầu vào, cập nhật thông tin sản phẩm và
-        triển khai các chức năng tương tác trên
-        website thương mại điện tử.
-
-        Qua quá trình thực hành, em nhận thấy
-        bản thân cần tiếp tục cải thiện kỹ năng
-        gỡ lỗi, tổ chức mã nguồn và kết hợp
-        JavaScript với HTML, CSS để xây dựng
-        website hiệu quả và thân thiện hơn.
-    </p>
-</div>
-
+            <div class="reflection">
+                <p>
+                    Qua ba bài thực hành JavaScript, em đã củng cố kiến thức về biến,
+                    điều kiện, vòng lặp, hàm, DOM, xử lý sự kiện và thư viện jQuery.
+                    Em cảm thấy Lab 09 hữu ích nhất nhưng cũng khá khó vì phải hiểu
+                    cấu trúc HTML, xác định đúng phần tử và kiểm tra các sự kiện trên
+                    trình duyệt. Những kỹ thuật này có thể vận dụng để kiểm tra biểu
+                    mẫu đăng ký, cập nhật thông tin sản phẩm, hỗ trợ thao tác giỏ hàng
+                    và tạo hiệu ứng tương tác cho website thương mại điện tử. Qua quá
+                    trình thực hành, em nhận thấy bản thân cần cải thiện thêm kỹ năng
+                    gỡ lỗi, tổ chức mã nguồn và xử lý AJAX để phát triển các chức năng
+                    web ổn định, dễ sử dụng hơn.
+                </p>
+            </div>
         </section>
-
     </main>
 
-    <!-- 6. FOOTER -->
+    <!-- 6. CHÂN TRANG -->
     <footer class="footer">
         <div class="container footer-content">
-
-            <p>
-                JavaScript Labs –
-                Phát triển ứng dụng Thương mại điện tử
-            </p>
-
+            <p>© 2026 Trần Thị Kim Ngân · JavaScript Labs · UEH</p>
             <a href="https://github.com/KimNgan806"
-               target="_blank"
-               rel="noopener noreferrer">
-                GitHub cá nhân
-            </a>
-
+               target="_blank" rel="noopener noreferrer">GitHub cá nhân</a>
         </div>
     </footer>
-
 </body>
 </html>
